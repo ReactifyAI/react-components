@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "question": "What is React?",
+    "answer": "React is a JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called components."
+  },
+  {
+    "id": 2,
+    "question": "What is TypeScript?",
+    "answer": "TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale."
+  },
+  {
+    "id": 3,
+    "question": "What is Tailwind CSS?",
+    "answer": "Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs without writing CSS."
+  },
+  {
+    "id": 4,
+    "question": "How do I install dependencies?",
+    "answer": "Run 'npm install' in your project directory to install all dependencies listed in package.json."
+  },
+  {
+    "id": 5,
+    "question": "What is an API?",
+    "answer": "API stands for Application Programming Interface. It's a set of rules that allows programs to talk to each other."
+  },
+  {
+    "id": 6,
+    "question": "What is REST?",
+    "answer": "REST stands for Representational State Transfer. It's an architectural style for designing networked applications."
+  },
+  {
+    "id": 7,
+    "question": "What is JSON?",
+    "answer": "JSON (JavaScript Object Notation) is a lightweight data format that is easy for humans to read and write and easy for machines to parse and generate."
+  },
+  {
+    "id": 8,
+    "question": "What is a component?",
+    "answer": "A component is a reusable piece of UI that can contain its own structure, styling, and behavior."
+  },
+  {
+    "id": 9,
+    "question": "What are hooks?",
+    "answer": "Hooks are functions that let you use state and other React features in functional components."
+  },
+  {
+    "id": 10,
+    "question": "What is props?",
+    "answer": "Props (short for properties) are how you pass data from parent to child components in React."
+  }
+]
