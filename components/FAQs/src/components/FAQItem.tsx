@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { type FAQ } from '../types/faq'
-import { ChevronUpDownIcon, InfoIcon } from './icons'
+import { ChevronUpDownIcon } from './icons'
 
 interface FAQItemProps {
   faq: FAQ;
@@ -10,32 +10,23 @@ interface FAQItemProps {
 
 export const FAQItem = memo(function({ faq, isOpen, onToggle }: FAQItemProps) {
   return (
-    <div>
+    <div className={`faq-item${isOpen ? ' is-open' : ''}`}>
       {/* Question Button */}
       <button
+        className="faq-question-btn"
         onClick={onToggle}
         aria-expanded={isOpen}
       >
-        <span>
-          {faq.question}
-        </span>
-        
-        {/* Animated Arrow Icon */}
-        <ChevronUpDownIcon isOpen={isOpen} />
+        <span>{faq.question}</span>
+        <ChevronUpDownIcon className="faq-chevron" />
       </button>
 
       {/* Answer with smooth animation */}
-      {isOpen && (
-        <div>
+      <div className="faq-answer">
+        <div className="faq-answer-inner">
           <p>{faq.answer}</p>
-          <div>
-            <span>
-              <InfoIcon />
-              Helpful Answer
-            </span>
-          </div>
         </div>
-      )}
+      </div>
     </div>
   )
 })

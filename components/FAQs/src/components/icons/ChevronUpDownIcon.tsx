@@ -1,6 +1,7 @@
-export function ChevronUpDownIcon({ isOpen }: { isOpen: boolean }) {
+export function ChevronUpDownIcon({ className } : { className : string}) {
   return (
     <svg
+      className={className}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
