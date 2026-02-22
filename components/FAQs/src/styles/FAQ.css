@@ -64,6 +64,13 @@
   border-color: #4f6ef7;
 }
 
+
+/* Hide browser's default clear button on search input */
+.faq-search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .faq-search-clear {
   position: absolute;
   right: 8px;
@@ -140,6 +147,7 @@
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 300ms ease;
+  margin-left: 0;
 }
 
 .faq-item.is-open .faq-answer {
