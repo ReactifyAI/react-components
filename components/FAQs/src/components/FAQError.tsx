@@ -6,9 +6,9 @@ interface FAQErrorProps {
 
 export function FAQError({ message }: FAQErrorProps) {
   return (
-    <div className="faq-error">
+    <div className="faq-error" role="alert">
       <ErrorIcon className="icon icon--lg" />
-      <h3>Error Loading FAQs</h3>
+      <h2>Error Loading FAQs</h2>
       <p>{message}</p>
       <button className="faq-error-btn" onClick={() => window.location.reload()}>
         Try Again

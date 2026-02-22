@@ -1,6 +1,8 @@
 export function ChevronUpDownIcon({ className } : { className : string}) {
   return (
     <svg
+      aria-hidden="true"
+      focusable="false"
       className={className}
       fill="none"
       viewBox="0 0 24 24"

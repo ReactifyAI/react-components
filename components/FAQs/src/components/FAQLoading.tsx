@@ -1,6 +1,10 @@
 export function FAQLoading() {
   return (
-    <div className="faq-loading">
+    <div 
+      role="status"
+      aria-label="Loading FAQs"
+      className="faq-loading"
+    >
       <p>Loading FAQs...</p>
     </div>
   )

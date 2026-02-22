@@ -21,41 +21,44 @@ export function FAQContent({
   onSearchClear
 }: FAQContentProps) {
   return (
-    <div className="faq-wrapper">
+    <main className="faq-wrapper">
       <div className="faq-container">
-        {/* Header */}
-        <div className="faq-header">
+        {/* <header> groups the intro heading — semantic landmark */}
+        <header className="faq-header">
           <h1>Frequently Asked Questions</h1>
           <p>Find answers to common questions about React, TypeScript, and more</p>
-        </div>
+        </header>
 
-        {/* Search */}
-        <div className="faq-search-wrapper">
+        {/* <search> is the HTML5 landmark for search UI */}
+        <search className="faq-search-wrapper">
           <SearchIcon className="faq-search-icon" />
           <input
             className="faq-search-input"
-            type="text"
+            type="search"
             value={searchQuery}
             onChange={e => onSearchChange(e.target.value)}
-            placeholder="Search..."
+            placeholder="Search questions..."
+            aria-label="Search FAQs"
+            name="Search FAQs"
           />
 
           {searchQuery && (
-            <button className="faq-search-clear" onClick={onSearchClear}>
+            <button className="faq-search-clear" onClick={onSearchClear} aria-label="Clear search">
               <CloseIcon className="icon" />
             </button>
           )}
-        </div>
+        </search>
 
         {searchQuery && (
-          <p className="faq-result-count">
+          <p className="faq-result-count" aria-live="polite">
             Found {faqs.length} {faqs.length === 1 ? 'result' : 'results'}
           </p>
         )}
 
         {/* FAQ List or Empty State */}
+        {/* <dl> = description list, the right element for Q&A pairs */}
         {faqs.length > 0 ? (
-          <div>
+          <dl>
             {faqs.map(faq => (
               <FAQItem
                 key={faq.id}
@@ -64,9 +67,9 @@ export function FAQContent({
                 onToggle={() => onToggle(faq.id)}
               />
             ))}
-          </div>
+          </dl>
         ) : searchQuery ? (
-          <div className="faq-empty">
+          <div className="faq-empty" role="status">
             <SadFaceIcon className="icon icon--lg" />
             <h3>No results found</h3>
             <p>Try searching for something else</p>
@@ -76,6 +79,6 @@ export function FAQContent({
           </div>
         ) : null}
       </div>
-    </div>
+    </main>
   )
 }
