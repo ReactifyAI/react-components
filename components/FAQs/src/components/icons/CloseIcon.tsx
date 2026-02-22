@@ -1,12 +1,14 @@
-export function CloseIcon({ className }: { className?: string }) {
+export function CloseIcon({ className } : { className?: string }) {
   return (
     <svg
+      aria-labelledby="clear-search-button"
+      role="button"
       className={className}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
     >
-      <title>Close icon</title>
+      <title id="clear-search-button">Clear search button</title>
       <path
         strokeLinecap="round"
         strokeLinejoin="round"

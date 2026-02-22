@@ -73,7 +73,7 @@ export function FAQContent({
             <SadFaceIcon className="icon icon--lg" />
             <h3>No results found</h3>
             <p>Try searching for something else</p>
-            <button className="faq-empty-btn" onClick={onSearchClear}>
+            <button aria-label="Clear search" className="faq-empty-btn" onClick={onSearchClear}>
               Clear Search
             </button>
           </div>
