@@ -1,0 +1,73 @@
+.page {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f7f4;
+  padding: 25px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 40px 48px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.8);
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 40px;
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.labelWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+
+.label {
+  font-size: 13px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.badge {
+  font-size: 12px;
+  font-family: monospace;
+  color: #555;
+  padding: 2px 8px;
+  background-color: #f3f4f6;
+  border-radius: 99px;
+  text-transform: uppercase;
+}
+
+.starButtonsWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.starButton {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  background: none;
+}
