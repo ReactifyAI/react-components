@@ -64,17 +64,17 @@ export default function TicTacToe() {
   return (
     <div className="app-container">
       <h1>Tic Tac Toe Game</h1>
-        <div>
-          { winner ? `Winner: PLAYER ${winner}` : isDraw ? "It's a Draw": `Next Player: ${currentPlayer}`}
-        </div>
+      <div>
+        { winner ? `Winner: PLAYER ${winner}` : isDraw ? "It's a Draw": `Next Player: ${currentPlayer}`}
+      </div>
 
-        <Board
-          tiles={tiles}
-          onTileClick={handleTileClick}
-          strikeClass={strikeClass}
-        />
+      <Board
+        tiles={tiles}
+        onTileClick={handleTileClick}
+        strikeClass={strikeClass}
+      />
 
-        <button onClick={handleReset} className="reset-button">Reset Game</button>
+      <button onClick={handleReset} className="reset-button">Reset Game</button>
     </div>
   )
 }
