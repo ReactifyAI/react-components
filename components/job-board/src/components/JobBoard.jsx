@@ -1,107 +1,69 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useJobIds } from '../hooks/useJobIds'
+import { useJobDetails } from '../hooks/useJobDetails'
+import JobItem from './JobItem'
 import './JobBoard.css'
 
-const JOBS_PER_PAGE = 6
-const API_BASE_URL = 'https://hacker-news.firebaseio.com/v0'
+function Loading() {
+  return (
+    <p className="loading-state" aria-live="polite" aria-busy="true">Loading jobs...</p>
+  )
+}
+
+function ErrorMessage({ message }) {
+  return (
+    <p className="error-message" role="alert" aria-live="assertive">{message}</p>
+  )
+}
 
 export default function JobBoard() {
-  const [jobIds, setJobIds] = useState([])
-  const [jobs, setJobs] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-
-  const fetchJobDetails = async (ids, page) => {
-    setLoading(true)
-
-    const start = page * JOBS_PER_PAGE
-    const end = start + JOBS_PER_PAGE
-    const idsToFetch = ids.slice(start, end)
-
-    try {
-      const promises = idsToFetch.map(id => fetch(`${API_BASE_URL}/item/${id}.json`).then(res => res.json()))
-      
-      const newJobs = await Promise.all(promises)
-      setJobs(prevJobs => [...prevJobs, ...newJobs])
-    } catch (err) {
-      setError(`Failed to load job details. Please try again later: ${err}`)
-    } finally {
-      setLoading(false)
-    }
-  }
+  const { jobIds, loading: idsLoading, error: idsError } = useJobIds()
+  const {
+    jobsList,
+    loading: jobsLoading,
+    error: jobsError,
+    hasMore,
+    fetchJobDetails,
+    loadMore
+  } = useJobDetails(jobIds)
 
   useEffect(() => {
-    const fetchJobIds = async () => {
-      setLoading(true)
-
-      try {
-        const response = await fetch(`${API_BASE_URL}/jobstories.json`)
-        const ids = await response.json()
-        setJobIds(ids)
-        await fetchJobDetails(ids, 0)
-      } catch (err) {
-        setError(`Failed to load jobs. Please try again later: ${err}`)
-      } finally {
-        setLoading(false)
-      }
+    if (jobIds.length > 0) {
+      fetchJobDetails(jobIds, 0)
     }
+  }, [jobIds, fetchJobDetails])
 
-    fetchJobIds()
-  }, [])
-
-  function loadMore() {
-    const nextPage = Math.floor(jobs.length / JOBS_PER_PAGE)
-    fetchJobDetails(jobIds, nextPage)
-  }
-
-  const hasMore = jobs.length < jobIds.length
+  const isLoading = idsLoading || jobsLoading
+  const error = idsError || jobsError
 
   return (
-    <main class="job-board-container" aria-label="Hacker News Job Board">
-      <div className="job-board-header" aria-live="polite" aria-atomic="true">
+    <main className="job-board-container" aria-label="Hacker News Job Board">
+      <header className="job-board-header">
         <h1 className="job-board-title">Hacker News Job Board</h1>
-        <p className="job-board-subtitle">Latest job postings from Y combinator companies</p>
-      </div>
+        <p className="job-board-subtitle">Latest postings from Y Combinator companies</p>
+      </header>
 
-      {error && <p className="error-message" role="alert">{error}</p>}
+      {error && <ErrorMessage message={error} />}
 
-      <ul className="job-list">
-        {jobs.map(job => (
-          <li key={job.id} className="job-list-item">
-            <h2 className="job-title">
-              {job.url ? (
-                <a
-                  href={job.url}
-                  target="_blank"
-                  className="job-link"
-                  rel="noopener noreferrer"
-                  aria-label={`${job.title} opens in a new tab`}
-                >
-                  {job.title}
-                </a>
-              ) : (
-                job.title
-              )}
-            </h2>
-            <p className="job-posting-meta-data">
-              <span>By {job.by}</span>
-              <span className="dot" aria-hidden="true" />
-              <time dateTime={new Date(job.time * 1000).toISOString()}>
-                {new Date(job.time * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-              </time>
-            </p>
-          </li>
+      <ul
+        className="job-list"
+        aria-label="Job listings"
+        aria-live="polite"
+        aria-busy={isLoading}
+      >
+        {jobsList.map(job => (
+          <JobItem key={job.id} job={job} index={job.id} />
         ))}
       </ul>
 
-      {loading && <p className="loading-state" aria-live="polite">Loading jobs...</p>}
+      {isLoading && <Loading />}
 
-      {!loading && hasMore && (
+      {!isLoading && hasMore && (
         <button
-          onClick={loadMore}
           className="load-more-button"
-          aria-label="Load more jobs"
+          onClick={loadMore}
         >
-          Load More
+          Load more
         </button>
       )}
     </main>
