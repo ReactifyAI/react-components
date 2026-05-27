@@ -1,0 +1,85 @@
+:root {
+  --bg-color: #d7dadc;
+  --text-main: #202124;
+  --text-sub: #70757a;
+  --primary-blue: #1a73e8;
+  --border-color: #dadce0;
+  --card-bg: #ffffff;
+  --btn-hover: #1557b0;
+  --btn-danger-hover: #b31412;
+  --reset-hover: #e5e6e8;
+  --danger-red: #d93025;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.stopwatch-container {
+  background-color: var(--card-bg);
+  padding: 50px 40px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(23, 23, 23, 0.24);
+  text-align: center;
+  min-width: 300px;
+}
+
+.timer-display {
+  font-family: 'Courier New', Courier, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--text-main);
+  margin-bottom: 25px;
+  padding: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.btn {
+  padding: 10px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn-start {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.btn-start:hover {
+  background-color: var(--btn-hover);
+}
+
+.btn-stop {
+  background-color: var(--danger-red);
+  color: white;
+}
+
+.btn-stop:hover {
+  background-color: var(--btn-danger-hover);
+}
+
+.btn-reset {
+  background-color: white;
+  color: var(--text-sub);
+  border: 1px solid var(--border-color);
+}
+
+.btn-reset:hover {
+  background-color: var(--reset-hover);
+  color: var(--text-main);
+}
