@@ -1,0 +1,50 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 20px;
+}
+
+.like-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 24px;
+  border: 2px solid;
+  background-color: #ffffff;
+  min-width: 120px;
+}
+
+.spinner-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #888;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.heart-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.error-message {
+  color: #df2c2c;
+  font-size: 14px;
+  font-weight: 500;
+  max-width: 300px;
+  margin-top: 4px;
+}
