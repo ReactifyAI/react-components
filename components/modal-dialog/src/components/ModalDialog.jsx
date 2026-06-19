@@ -1,12 +1,16 @@
+import { createPortal } from 'react-dom'
+import { useId } from 'react'
 import './ModalDialog.css'
 
 export default function ModalDialog({ isOpen, onClose, title, children }) {
   if(!isOpen) return null
 
-  const titleId = "modal-title"
-  const descriptionId = "modal-description"
+  const titleId = useId()
+  const descriptionId = useId()
 
-  return (
+  const modalRoot = document.getElementById('modal-root')
+
+  return createPortal(
     <div className="modal-overlay" onClick={onClose}>
       <div
         className="modal-container"
@@ -31,6 +35,7 @@ export default function ModalDialog({ isOpen, onClose, title, children }) {
 
         <div id={descriptionId} className="modal-content">{children}</div>
       </div>
-    </div>
+    </div>,
+    modalRoot
   )
 }
