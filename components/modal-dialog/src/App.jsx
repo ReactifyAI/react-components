@@ -1,6 +1,13 @@
 import { useState } from 'react'
 import ModalDialog from './components/ModalDialog'
 
+const content = `Modal dialogs are interactive overlay windows that temporarily
+  disable the main content of a web page, focusing user attention
+  on specific tasks or information. They serve various purposes,
+  including displaying critical alerts, requesting user input,
+  confirming actions, and presenting additional content without
+  navigating away from the current context.`
+
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -14,17 +21,11 @@ function App() {
       <ModalDialog
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title="What are Modal Dialogs"
+        title="What are Modal Dialogs?"
       >
-        <p>{`Modal dialogs are interactive overlay windows that temporarily
-            disable the main content of a web page, focusing user attention
-            on specific tasks or information. They serve various purposes,
-            including displaying critical alerts, requesting user input,
-            confirming actions, and presenting additional content without
-            navigating away from the current context.`}
-        </p>
+        <p>{content}</p>
       </ModalDialog>
-   </div>
+    </div>
   )
 }
 
