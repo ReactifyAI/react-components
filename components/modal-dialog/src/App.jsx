@@ -1,12 +1,8 @@
 import { useState } from 'react'
 import ModalDialog from './components/ModalDialog'
+import './components/ModalDialog.css'
 
-const content = `Modal dialogs are interactive overlay windows that temporarily
-  disable the main content of a web page, focusing user attention
-  on specific tasks or information. They serve various purposes,
-  including displaying critical alerts, requesting user input,
-  confirming actions, and presenting additional content without
-  navigating away from the current context.`
+const content = `Provide your feedback, we will get back in 3-5 business days.`
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -21,9 +17,12 @@ function App() {
       <ModalDialog
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title="What are Modal Dialogs?"
+        title="Feedback"
       >
         <p>{content}</p>
+        <input placeholder="your_email@email.com" />
+        <textarea placeholder="Your message here" rows={5}></textarea>
+        <button className="feedback-submit-button" type="button">Submit</button>
       </ModalDialog>
     </div>
   )
