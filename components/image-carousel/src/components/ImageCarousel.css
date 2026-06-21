@@ -1,0 +1,34 @@
+.carousel {
+  /* width: min(600px, 100%); */
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.image-container img {
+  height: 400px;
+  object-fit: contain;
+  background-color: black;
+}
+
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.pagination-buttons {
+  background: transparent;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
