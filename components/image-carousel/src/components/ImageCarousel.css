@@ -6,13 +6,46 @@
 }
 
 .image-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  position: relative;
 }
 
-.image-container img {
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+  border: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 40px;
+  height: 40px;
+  font-size: 25px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.viewport {
+  overflow: hidden;
+  flex: 1;
+}
+
+.slides {
+  display: flex;
+  transition: transform 300ms ease;
+}
+
+.slides img {
+  width: 100%;
+  flex-shrink: 0;
   height: 400px;
   object-fit: contain;
   background-color: black;

@@ -15,17 +15,31 @@ export default function ImageCarousel({ images }) {
   return (
     <div className="carousel">
       <div className="image-container">
-        <button onClick={handlePrevious}>Previous</button>
-        <img
-          src={images[currentIndex].src}
-          alt={images[currentIndex].alt}
-        />
-        <button onClick={handleNext}>Next</button>
+        <button onClick={handlePrevious} className="nav-button prev">&lt;</button>
+
+        <div className="viewport">
+          <div
+            className="slides"
+            style={{
+              transform: `translateX(-${currentIndex * 100}%)`
+            }}
+          >
+            {images.map((image) => (
+              <img
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+              />
+            ))}
+          </div>
+        </div>
+
+        <button onClick={handleNext} className="nav-button next">&gt;</button>
       </div>
     
 
       <div className="pagination">
-        {images.map((image, index) => (
+        {images.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
