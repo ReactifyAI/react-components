@@ -1,0 +1,16 @@
+.checkbox-label-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.checkbox-label {
+  font-size: 20px;
+}
+
+.checkbox-child-node {
+  margin-left: 20px;
+  padding-left: 12px;
+  border-left: 1px solid #ddd;
+}
